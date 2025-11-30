@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Kingdom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    /* Hide/show utility class */
+    .hidden {
+        display: none;
+    }
+
+    /* Animated background gradient for the whole page */
+    body {
+        background: linear-gradient(-45deg, #10b981, #065f46, #14b8a6, #22d3ee);
+        background-size: 400% 400%;
+        animation: gradient-animation 15s ease infinite;
+    }
+
+    /* Background image specifically for the Home section */
+    #home {
+        background-image: url('background.jpg'); /* Tukar 'latar-belakang-home.jpg' dengan nama fail anda */
+        background-size: cover; /* Melaraskan saiz gambar supaya muat sepenuhnya */
+        background-position: c ; /* Memusatkan gambar */
+        background-repeat: no-repeat; /* Mengelakkan gambar berulang */
+        color: white; /* Menukar warna teks agar lebih jelas di atas gambar */
+        padding: 4rem; /* Menambah ruang di sekeliling kandungan */
+        border-radius: 1rem; /* Menambah sudut bulat */
+    }
+
+    @keyframes gradient-animation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    /* Fade-in and pop-in animation for sections and cards */
+    .fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .card-pop-in {
+        animation: popIn 0.6s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes popIn {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+<body class="font-sans leading-normal tracking-normal text-gray-800">
+
+    <header class="bg-emerald-600 text-white p-6 text-center shadow-2xl transition-all duration-500">
+        <h1 class="text-5xl font-extrabold mb-4 animate-pulse">Welcome to the Animal Kingdom!</h1>
+        <nav class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
+            <button onclick="showSection('home')" class="py-3 px-8 rounded-full bg-emerald-700 hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                Home
+            </button>
+            <button onclick="showSection('herbivores')" class="py-3 px-8 rounded-full bg-emerald-700 hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                Herbivores
+            </button>
+            <button onclick="showSection('omnivores')" class="py-3 px-8 rounded-full bg-emerald-700 hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                Omnivores
+            </button>
+            <button onclick="showSection('carnivores')" class="py-3 px-8 rounded-full bg-emerald-700 hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                Carnivores
+            </button>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-8 pt-12">
+
+        <div id="home" class="fade-in text-center p-8">
+            <h2 class="text-4xl font-bold text-white mb-8">Unleash Your Curiosity: Explore the Wild!</h2>
+            <p class="text-xl text-white mb-6">
+                Ready to dive into a world of incredible creatures? Our updated Animal Kingdom is here to amaze and educate. Click the button below to see a collection of some of the most fascinating animals on the planet.
+            </p>
+            <button onclick="showSection('omnivores')" class="py-3 px-8 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                Start Exploring!
+            </button>
+        </div>
+
+        <div id="omnivores" class="hidden bg-white p-10 rounded-3xl shadow-2xl">
+            <h2 class="text-4xl font-bold text-center text-emerald-700 mb-8">Omnivores</h2>
+            <p class="text-center mb-12 text-lg text-gray-600">
+                Omnivores are animals that eat both plants and other animals. They have a flexible diet that includes a mix of meat and vegetation.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Bear</h3>
+                    <img src="bear.jpg" alt="A brown bear fishing in a river." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">Bears are omnivores that eat a wide variety of foods, including berries, insects, fish, and small mammals.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Bears have a fantastic sense of smell, seven times better than a bloodhound's.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Raccoon</h3>
+                    <img src="raccoon.jpg" alt="A raccoon in a forest." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">The raccoon is a medium-sized mammal native to North America. Known for its "masked" face and dexterous front paws, it is a highly adaptable omnivore.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Raccoons are known to "wash" their food before eating, which is actually a way to soften and find small, hidden food items.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Pig</h3>
+                    <img src="pig.jpg" alt="A pig in a farm." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">Pigs are domesticated, hoofed mammals that can eat both plants and animals.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Pigs are highly intelligent and can be trained to do tricks.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Fox</h3>
+                    <img src="fox.jpg" alt="A red fox in a field." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">A fox is a small to medium-sized omnivorous mammal belonging to several genera of the family Canidae.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">A fox's diet changes with the seasons, from insects in summer to small mammals in winter.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="carnivores" class="hidden bg-white p-10 rounded-3xl shadow-2xl">
+            <h2 class="text-4xl font-bold text-center text-emerald-700 mb-8">Carnivores</h2>
+            <p class="text-center mb-12 text-lg text-gray-600">
+                Carnivores are animals that primarily obtain food by eating other animals. Their diet is mostly or entirely meat.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Lion</h3>
+                    <img src="lion.jpg" alt="A majestic lion waiting in the grass." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">The lion is a large cat of the genus Panthera, native to Africa and India. It is a powerful apex predator.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Lions are the only cats that live in groups, called prides.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Wolf</h3>
+                    <img src="wolf.jpg" alt="A grey wolf standing in a forest." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">The wolf is a large canid native to Eurasia and North America. They are social animals that hunt in packs.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Wolves communicate with each other through howls, barks, growls, and whines.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Tiger</h3>
+                    <img src="tiger.jpg" alt="A bengal tiger in the wild." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">The tiger is the largest cat species, known for their distinctive striped coats.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">A tiger's roar can be heard from up to 3 kilometers away.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Crocodile</h3>
+                    <img src="croco.jpg" alt="A crocodile in the water." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">Crocodiles are large, semi-aquatic reptiles that live throughout the tropics.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Crocodiles have the strongest bite force of any animal.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="herbivores" class="hidden bg-white p-10 rounded-3xl shadow-2xl">
+            <h2 class="text-4xl font-bold text-center text-emerald-700 mb-8">Herbivores</h2>
+            <p class="text-center mb-12 text-lg text-gray-600">
+                Herbivores are animals that eat only plants. Their digestive systems are specialized to break down vegetation.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Elephant</h3>
+                    <img src="elephant.jpg" alt="An African elephant in a field." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">The elephant is the largest living land animal, and it eats a wide variety of plant material, including grasses, leaves, bark, and fruit.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">An elephant's trunk contains about 40,000 muscles, making it extremely strong and flexible.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Cow</h3>
+                    <img src="cow.jpg" alt="A black and white cow grazing." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">Cows are large, domesticated, bovine hoofed mammals. Their primary food source is grass and other plants.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Cows can sleep standing up but only dream when lying down.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Gorilla</h3>
+                    <img src="gorilla.jpg" alt="A gorilla sitting in a habitat." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">Gorillas are ground-dwelling, predominantly herbivorous apes that inhabit the forests of central Sub-Saharan Africa.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Gorillas are one of the most intelligent primates and can use tools.</p>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 text-center animal-card card-pop-in">
+                    <h3 class="text-3xl font-bold mb-4 text-emerald-600">Koala</h3>
+                    <img src="koala.jpg" alt="A koala in a eucalyptus tree." class="rounded-xl w-full h-48 object-cover mb-6 border-4 border-emerald-500">
+                    <p class="text-gray-700 mb-4">The koala is an arboreal herbivorous marsupial native to Australia.</p>
+                    <button onclick="toggleFact(this)" class="py-2 px-6 rounded-full bg-emerald-700 text-white hover:bg-emerald-800 transition duration-500 transform hover:scale-105 shadow-md">
+                        Did you know?
+                    </button>
+                    <p class="fact-text mt-4 text-emerald-600 font-bold hidden">Koalas have fingerprints that are almost identical to human fingerprints.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button onclick="scrollToTop()" id="backToTopBtn" class="hidden fixed bottom-6 right-6 bg-emerald-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:bg-emerald-800">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <footer class="bg-emerald-800 text-white text-center p-4 mt-12 shadow-inner">
+        <p>&copy; 2023 Animal Kingdom. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to show a specific section and hide others
+        function showSection(sectionId) {
+            const sections = ['home', 'carnivores', 'omnivores', 'herbivores'];
+            
+            sections.forEach(id => {
+                const sectionElement = document.getElementById(id);
+                sectionElement.classList.add('hidden');
+                sectionElement.classList.remove('fade-in');
+            });
+
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.remove('hidden');
+            selectedSection.classList.add('fade-in');
+
+            // Reset all card animations when a new section is shown
+            const cards = selectedSection.querySelectorAll('.animal-card');
+            cards.forEach(card => {
+                card.style.animation = 'none';
+                card.offsetHeight; // Trigger reflow
+                card.style.animation = null;
+            });
+        }
+
+        // Function to handle the "Did You Know?" button click
+        function toggleFact(buttonElement) {
+            // Find the parent card and the hidden fact text
+            const card = buttonElement.closest('.animal-card');
+            const factText = card.querySelector('.fact-text');
+
+            // Toggle the 'hidden' class
+            if (factText.classList.contains('hidden')) {
+                factText.classList.remove('hidden');
+                buttonElement.textContent = "Hide Fact";
+            } else {
+                factText.classList.add('hidden');
+                buttonElement.textContent = "Did you know?";
+            }
+        }
+        
+        // Function to handle the "Back to Top" button
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Show/hide the back to top button on scroll
+        window.addEventListener('scroll', () => {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+
+        // Initially show the home section when the page loads
+        window.onload = function() {
+            showSection('home');
+        };
+    </script>
+</body>
+</html>
